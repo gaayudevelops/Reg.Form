@@ -59,41 +59,36 @@ const emailInput = document.querySelector('#email');
 const msg = document.querySelector('.msg');
 const userList = document.querySelector('#users');
 
+
+
 // Listen for form submit
 myForm.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
   e.preventDefault();
 
+
+
+
   if(nameInput.value === '' || emailInput.value === '') {
     // alert('Please enter all fields');
     msg.classList.add('error');
-    msg.innerHTML = 'Please enter all fields';
-
-    // Remove error after 3 seconds
-    setTimeout(() => msg.remove(), 3000);
-  } else {
-    // Create new list item with user
-    const li = document.createElement('li');
-
-    // Add text node with input values
-    li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
-
-    // Add HTML
-    //li.innerHTML = `<strong>${nameInput.value}</strong>e: ${emailInput.value}`;
-
+@@ -84,24 +88,34 @@ function onSubmit(e) {
     // Append to ul
     userList.appendChild(li);
 
     console.log(nameInput.value);
     console.log(emailInput.value);
+    //console.log(nameInput.value);
+    //console.log(emailInput.value);
 
     //STORE ON LOCAL STORAGE
     localStorage.setItem('name', nameInput.value)
+    /*localStorage.setItem('name', nameInput.value)
     localStorage.setItem('email', emailInput.value)
-
     console.log(localStorage.getItem('name'));
 
+    console.log(localStorage.getItem('name'));*/
 
 
     // Clear fields
@@ -102,7 +97,25 @@ function onSubmit(e) {
   }
 
 
+    }
+
+ //STORING INPUT AS OBJECT ON LOCAL STORAGE
+ var name=nameInput.value;
+ var email=emailInput.value;
+  const obj={
+  name,
+  email,
+}
+localStorage.setItem('userdetails',JSON.stringify(obj));
+
+// Clear fields
+nameInput.value = '';
+emailInput.value = '';
+
+
+
 
 
 
 } 
+  
