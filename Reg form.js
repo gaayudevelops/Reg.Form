@@ -103,17 +103,29 @@ function onSubmit(e) {
  var name=nameInput.value;
  var email=emailInput.value;
   const obj={
-  name,
-  email,
-}
-localStorage.setItem('userdetails',JSON.stringify(obj));
-
-// Clear fields
-nameInput.value = '';
-emailInput.value = '';
-
-
-
+    name,
+    email,
+  }
+  localStorage.setItem('userdetails',JSON.stringify(obj));
+  localStorage.setItem(email,JSON.stringify(obj));
+  
+  
+  // Clear fields
+  nameInput.value = '';
+  emailInput.value = '';
+  
+  
+  
+    // Create new li element
+    var li = document.createElement('li');
+    // Add class
+    li.className = 'items';
+  
+  
+  
+    var newItem = localStorage.getItem(email);;
+    // Add text node with input value
+    li.appendChild(document.createTextNode(newItem));
 
 
 
